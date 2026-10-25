@@ -1,6 +1,6 @@
 # Roomora Web
 
-Roomora'nin web istemcisi, ortak yasam duzenini tek bir uygulama icinde toplamak icin tasarlandi. Ev gruplari, harcamalar, duzenli giderler, odemeler, borc-alacak ozeti ve ev notlari gibi gunluk akislari sade bir arayuzle bir araya getirir.
+Roomora'nin web istemcisi ev ve gezi gruplarinin ortak harcamalarini, odemelerini ve borc-alacak ozetini tarayicida sunar. Ev gruplarinda fatura ve ortak notlar da bulunur.
 
 Bu repo, ayni kod tabanini web ve mobil tarayici deneyimine yakin bir yapida surdurmek icin Expo ve React Native Web uzerinde gelistirilmektedir.
 
@@ -41,6 +41,15 @@ npm run web:build
 ```
 
 ## Proje Haritasi
+
+```mermaid
+flowchart LR
+    Browser[Tarayici] --> UI[Expo / React Native Web]
+    UI --> Auth[Oturum ve grup baglami]
+    UI --> Client[API istemcisi]
+    Client --> API[Roomora Backend]
+    API --> DB[(SQL Server)]
+```
 
 - `App.js`: uygulama giris noktasi ve navigation yapisi
 - `src/screens/`: urun ekranlari
