@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Alert, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 import { useTheme } from '../shared/theme/ThemeProvider';
 import { useAuth } from '../context/AuthContext';
@@ -110,9 +110,13 @@ export default function SettingsScreen({ navigation }) {
       </TouchableOpacity>
 
       <View style={styles.signatureWrap}>
+        <Image
+          source={theme.mode === 'light' ? require('../assets/takosware-mark-black.png') : require('../assets/takosware-mark-white.png')}
+          style={styles.signatureMark}
+          resizeMode="contain"
+        />
         <Text style={styles.signatureText}>
-          Bu bir Tarık Çetintürk projesidir. Backend, frontend ve DevOps süreçlerinin tamamı tek
-          başına geliştirilmiştir.
+          Bir Takosware projesi. Tarık Çetintürk tarafından geliştirildi.
         </Text>
       </View>
     </ScrollView>
@@ -246,12 +250,16 @@ const makeStyles = (theme) =>
       pointerEvents: 'none',
       marginTop: 14,
       paddingHorizontal: 10,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 6,
     },
+    signatureMark: { width: 30, height: 30 },
     signatureText: {
       color: theme.colors.text.secondary,
-      opacity: 0.5,
       fontSize: 12,
       lineHeight: 18,
-      textAlign: 'center',
+      flexShrink: 1,
     },
   });
